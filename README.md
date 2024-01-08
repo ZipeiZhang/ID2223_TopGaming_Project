@@ -1,4 +1,4 @@
-San Francisco Traffic Accident Severity Prediction
+#San Francisco Traffic Accident Severity Prediction
 Overview
 This project focuses on predicting the severity of traffic accidents in San Francisco using a machine learning approach. By analyzing historical traffic accident data from the city's open data platform, we aim to classify incidents into severity classes to aid in emergency services response and city planning.
 
