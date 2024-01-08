@@ -1,47 +1,52 @@
-#San Francisco Traffic Accident Severity Prediction
-Overview
-This project focuses on predicting the severity of traffic accidents in San Francisco using a machine learning approach. By analyzing historical traffic accident data from the city's open data platform, we aim to classify incidents into severity classes to aid in emergency services response and city planning.
+# San Francisco Traffic Accident Severity Prediction
 
-Dataset
-The dataset is sourced from the "Traffic Accidents Reports" section of the San Francisco government's Open Data Platform. It includes detailed traffic incident records, encompassing attributes like time, severity, and location. The dataset is continually updated and contains over 800,000 entries to date.
+## Overview
+This project is focused on the classification of traffic accident severity in San Francisco using a machine learning model. By leveraging detailed historical data, the goal is to provide a predictive insight into the severity of traffic incidents to assist in emergency response and urban planning.
 
-Accessing the dataset requires an App Token registration and the installation of the sodapy package. We set limit=800000 to ensure we capture all historical data available at the time of our data fetch.
+## Dataset
+The dataset utilized for this project is derived from the "Traffic Accidents Reports" section of the San Francisco government's Open Data Platform, including a wide range of traffic incident details such as time, severity, location, and more. The dataset is regularly updated and at the time of the model's last training, contained over 800,000 entries.
 
-Methodology
-Data Preprocessing
-The preprocessing stage is crucial to streamline the dataset for model consumption. We initiated this by selecting only relevant columns and discarding entries with missing values to maintain data integrity. The code snippet provided outlines the preprocessing steps that were taken:
+To access the dataset, an App Token is required along with the installation of the `sodapy` package. The full historical data can be retrieved by setting `limit=800000` in the API call.
 
-We first created a subset of the dataframe containing only the columns relevant to our analysis.
-Severity mapping was applied to categorize the severity levels into 'Minor', 'Moderate', and 'Severe' injuries, including fatal incidents.
-Weather conditions were grouped into broader categories to reduce fragmentation and potential overfitting due to rare occurrences.
-Numerical mappings were assigned to categorical variables such as weather conditions, intersection types, road conditions, and other features, enabling the model to process them effectively.
-This process ensured that the dataset was clean, manageable, and ready for the feature engineering phase.
+## Methodology
 
-Feature Engineering
-We transformed the dataset into a feature set comprising:
+### Data Preprocessing
+Data preprocessing is a critical step to ensure the dataset is fit for model training. The following steps were conducted:
 
-Time of incident (year, month, hour)
-Weather conditions
-Road conditions
-Lighting conditions
-Type of collision
-Movements and types of parties involved in the accident
-The target variable for prediction was the severity class of the incident.
-Model Training
-A predictive model was trained using the XGBoost algorithm to classify the severity of traffic incidents. The dataset was split into training and testing sets with an 80-20 ratio. The trained model achieved a certain level of accuracy, indicating its ability to generalize from the provided features.
+1. **Subset Selection**: We filtered the dataset to include only the columns pertinent to our predictive analysis.
 
-Deliverables
-We provided two key deliverables:
+2. **Severity Mapping**: Incident severities were categorized into classes such as 'Minor', 'Moderate', and 'Severe', including fatalities.
 
-Interactive Prediction UI: A user-friendly interface that allows users to input incident details and obtain a severity prediction.
+3. **Weather Grouping**: The diverse weather conditions were consolidated into more general categories.
 
-Dashboard Monitoring UI: A real-time monitoring dashboard displaying recent traffic incidents and their predicted severities, alongside actual severities.
+4. **Categorical Mapping**: Numerical mappings were assigned to categorical variables, transforming them into a machine-readable format.
 
-Predictive Model Monitor UI
-The monitoring UI, powered by Hugging Face Spaces, visualizes the latest traffic incidents with predicted and actual severities. It fetches and processes data regularly, displaying predictions from the trained model in an accessible manner.
+### Feature Engineering
+The dataset was transformed to create a feature set which included:
 
-Interactive Prediction UI
-This interface leverages Hugging Face Spaces to offer real-time severity predictions based on user-provided incident details. The model, hosted on Hopsworks, visualizes the severity to enhance user understanding of potential traffic risks.
+- Temporal aspects of the incident (year, month, hour)
+- Weather conditions
+- Road and lighting conditions
+- Collision types
+- Movements and types of involved parties
+- The target variable: the incident severity class.
 
-Conclusion
-Our predictive system offers a valuable tool for assessing traffic accident severity in San Francisco. By providing insights into incident severities, the model can facilitate more effective emergency responses and inform traffic management decisions. Future improvements may include incorporating additional data sources or adopting advanced modeling techniques to refine prediction accuracy.
+### Model Training
+The model was trained using the XGBoost algorithm to classify the severity of traffic incidents based on the features. We used an 80-20 split for training and testing sets and aimed to introduce data balancing to enhance model performance.
+
+## Deliverables
+
+### Interactive Prediction UI
+An interactive UI allows users to input incident features and receive a prediction for the incident's severity.
+
+### Dashboard Monitoring UI
+A dashboard UI displays the latest predictions on traffic accident severities and their actual values, updating in real-time as new data becomes available.
+
+## Model Monitor UI
+Utilizing Hugging Face Spaces, this UI visualizes the latest incidents with both predicted and actual severities. It demonstrates the model's real-world applicability in predicting the severity of traffic accidents.
+
+## Interactive UI
+This UI, also powered by Hugging Face Spaces, engages users by providing real-time severity predictions based on the details of the incident they input.
+
+## Conclusion
+Our model provides a valuable resource for understanding and predicting traffic accident severities in San Francisco, potentially aiding in better emergency response and city planning strategies. The model's predictive accuracy indicates its utility, with room for future enhancements.
